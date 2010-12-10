@@ -1,0 +1,186 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+    "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <title>Calitha Collections Dojo Plugin</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <link rel="stylesheet" type="text/css"
+            href="calitha-collections.css">
+    </head>
+    <body>
+        <div id="title">
+            <h1>Calitha Collections Dojo Plugin</h1>
+            <h2>An extension for Dojo providing high-level collection based objects</h2>
+        </div>
+        <h1>Introduction</h1>
+        <p>
+            calitha-collections is a javascript dojo extension for supporting collection based objects.
+            calitha-collections is based on the
+            <a href="http://java.sun.com/developer/onlineTraining/collections/Collection.html">Java Collections framework</a>.
+            The intent was to have an API very close to this Java framework for several reasons. 1. Java Collections
+            is a powerful, flexible and reliable framework. 2. The high-level approach to collections makes
+            javascript development more productive. Some of this collections implementation is very different to
+            Java, to make use of the special Javascript features, while other parts are almost identical.
+        </p>
+        <h1>Installation</h1>
+        <p>
+            There are two available downloads for each calitha-collections version:
+        </p>
+        <ul>
+            <li>calitha-collection-(version).zip - Contains calitha/collection.js that can be used in a production
+            environment. It is a single compressed javascript file containing all namespaces and classes.
+            The archive also contains a calitha/collections.js.uncompressed.js. This file is useful
+            for debugging.</li>
+            <li>calitha-collection-(version)-src.zip - Contains many seperate javascript files. Each
+            file contains a single class or namespace. From these files the previous file is generated.
+            These files are especially useful for development. It also contains the documentation.</li>
+        </ul>
+        <p>
+            calitha-collections has dependencies on Dojo core.
+            To use calitha-collections you must unpack one of the files above and include collections.js
+            (or the uncompressed.js file). An example how this can be done is shown here:
+            <div class="codeblock">
+&lt;html&gt;
+&lt;head&gt;
+    &lt;script src="js/dojo/dojo.js"&gt;&lt;/script&gt;
+    &lt;script src="js/calitha/collections.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+   ...
+&lt;/body&gt;
+&lt;/html&gt;
+            </div>
+        <h1>Documentation</h1>
+        <p>
+            The interface classes are extensively documented (mostly copied from the official JDK documentation).
+            Each interface will describe if there are any differences between it and the Java interface.
+            In the classes only the constructors with parameters are documented.
+        </p>
+        <p>
+            These are the main collection object implementations currently available:
+        </p>
+        <ul>
+            <li><a href="api/symbols/calitha.collections.ArrayList.html">calitha.collections.ArrayList</a></li>
+            <li><a href="api/symbols/calitha.collections.LinkedList.html">calitha.collections.LinkedList</a></li>
+            <li><a href="api/symbols/calitha.collections.HashSet.html">calitha.collections.HashSet</a></li>
+            <li><a href="api/symbols/calitha.collections.TreeSet.html">calitha.collections.TreeSet</a></li>
+            <li><a href="api/symbols/calitha.collections.HashMap.html">calitha.collections.HashMap</a></li>
+            <li><a href="api/symbols/calitha.collections.TreeMap.html">calitha.collections.TreeMap</a></li>
+            <li><a href="api/symbols/calitha.collections.Dictionary.html">calitha.collections.Dictionary</a></li>
+        </ul>
+        <p>
+            The official JDK documentation can give you a lot of information too:
+            <a href="http://java.sun.com/javase/6/docs/api/java/util/package-summary.html">Java 1.6 collections package summary</a>
+        </p>
+        <h1>Examples</h1>
+        <h2>ArrayList Example</h2>
+        <p>
+            Add some numbers to a list and then calculate the sum of all numbers.
+        </p>
+        <div class="codeblock">
+var list = calitha.collections.ArrayList();
+list.add(1);
+list.add(4);
+list.add(9);
+var result;
+list.forEach(function(item) {result += item});
+//result is 14
+        </div>
+        <p>
+            The same can be done with a LinkedList. Just create a calitha.collections.LinkedList
+        </p>
+        <h2>HashSet example</h2>
+        <p>
+            This example will add several custom Employee objects do some contains calls.
+        </p>
+        <div class="codeblock">
+// Employee contains an equals and hashCode method, so that it can be inserted in a hashtable and retrieved for
+// later use            
+dojo.declare("Employee", null,
+{
+    // code is an int number
+    constructor: function(code, firstName, lastName)
+    {
+        this.code = code;
+        this.firstName = firstName;
+        this.lastName = lastName;
+    },
+    equals: function(obj)
+    {
+        if (obj == null) return false;
+        if (this === obj) return true;
+        if (!obj instanceof Employee)) return false;
+        return this.code === obj.code;
+    }
+    ,
+    hashCode: function()
+    {
+        return this.code;
+    }
+});
+
+var set = calitha.collections.HashSet();
+set.add(new Employee(1234, "John", "Doe"));
+set.add(new Employee(2222, "Sherlock", "Holmes"));
+
+// ... in some other part of your code            
+var result1 = set.contains(new Employee(1234, "John", "Doe")); // is true
+var result2 = set.contains(new Employee(2300, "Jean-Luc", "Picard")); // is false            
+        </div>
+        <h2>HashMap example</h2>
+        <p>
+            This example will add number-to-string entries to a HashMap and iterate over all entries.
+        </p>
+        <div class="codeblock">
+// add an equals and hashCode method to Number.prototype so that they can be added to a HashMap
+dojo.collections.makeNumberHashCompatible(Number.prototype);
+var map = new calitha.collections.HashMap();
+map.put(5, "five");
+map.put(3, "three");
+map.put(7, "seven");
+var iterator = map.entrySet().iterator();
+while (iterator.hasNext())
+{
+    var entry = iterator.next();
+    console.info(entry.getKey() + " - " + entry.getValue());
+}
+        </div>
+        <h2>TreeSet</h2>
+        <p>
+            This example will add some strings to a TreeSet. The forEach call will show that the strings have
+            been sorted in the set.
+        </p>
+        <div class="codeblock">
+// let's sort case-insensitive
+var comparator = calitha.collections.caseInsenstiveStringComparator();
+var set = new calitha.collections.TreeSet(comparator);
+set.add("Hello");
+set.add("world!");
+set.add("This");
+set.add("is");
+set.add("a");
+set.add("test");
+set.forEach(function(item) {console.info(item});
+        </div>
+        <h1>Implementation details</h1>
+        <p>
+            Functions and properties starting with an underscore are considered private or protected. This means
+            that as a user of the library, it is not meant that you set those properties or call those functions.
+            Doing so can cause unknown errors.
+        </p>
+        <p>
+            calitha-collections uses multiple inheritance. However, just like in Java, at most one implementation
+            class is extended from, the others are interface classes. Interface classes are there just to
+            make it clear which methods an object must have. Each of those methods will throw a
+            calitha.exception.VirtualFunctionException meaning that the methods has not been implemented as the
+            interface requires.
+        </p>
+        <p>
+            The Java Collection classes contain a lot of inner classes. In calitha-collections those inner classes
+            have been put in seperate folders. Take for example the ListIterator in the LinkedList class. A folder
+            names linkedlist is created in which a ListIterator.js file is put. calitha.collections.LinkedList
+            will create an instance of calitha.collections.linkedlist.ListIterator and passes a reference of itself,
+            so that it can function as an inner class.
+        </p>
+    </body>
+</html>

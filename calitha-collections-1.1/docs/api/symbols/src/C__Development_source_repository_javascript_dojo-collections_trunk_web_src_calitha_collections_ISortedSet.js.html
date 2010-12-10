@@ -1,0 +1,93 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=UTF-8"> <style>
+	.KEYW {color: #933;}
+	.COMM {color: #bbb; font-style: italic;}
+	.NUMB {color: #393;}
+	.STRN {color: #393;}
+	.REGX {color: #339;}
+	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
+	</style></head><body><pre><span class='line'>  1</span> <span class="NAME">dojo.provide</span><span class="PUNC">(</span><span class="STRN">"calitha.collections.ISortedSet"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>  2</span> </span><span class="NAME">dojo.require</span><span class="PUNC">(</span><span class="STRN">"calitha.collections.ISet"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>  3</span> </span><span class="NAME">dojo.require</span><span class="PUNC">(</span><span class="STRN">"calitha.exception.VirtualFunctionException"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>  4</span> 
+<span class='line'>  5</span> </span><span class="COMM">/**
+<span class='line'>  6</span>  * @name calitha.collections.ISortedSet
+<span class='line'>  7</span>  * @class A Map that further provides a total ordering on its keys.
+<span class='line'>  8</span>  * &lt;p>
+<span class='line'>  9</span>  * It is based on the
+<span class='line'> 10</span>  * &lt;a href="http://java.sun.com/javase/6/docs/api/java/util/SortedSet.html">Java SortedSet interface&lt;/a>.
+<span class='line'> 11</span>  * Differences are:
+<span class='line'> 12</span>  * &lt;p>
+<span class='line'> 13</span>  * &lt;ul>
+<span class='line'> 14</span>  * &lt;li>In Java it is the NavigableSet interface that has methods with extra inclusive parameters for subSet and such.
+<span class='line'> 15</span>  * Those methods have been put in this ISortedSet class to replace those same methods without the inclusive parameters.
+<span class='line'> 16</span>  * This is done because overloading methods with inheritance too would be too confusing. And the methods with inclusive
+<span class='line'> 17</span>  * parameters are more clear anyway.
+<span class='line'> 18</span>  * &lt;/ul>
+<span class='line'> 19</span>  * @extends calitha.collections.ISet
+<span class='line'> 20</span>  */</span><span class="WHIT">
+<span class='line'> 21</span> </span><span class="NAME">dojo.declare</span><span class="PUNC">(</span><span class="STRN">"calitha.collections.ISortedSet"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">calitha.collections.ISet</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 22</span> </span><span class="COMM">/** @lends calitha.collections.ISortedSet# */</span><span class="WHIT">
+<span class='line'> 23</span> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 24</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'> 25</span>      * @function
+<span class='line'> 26</span>      * @returns {calitha.collections.IComparator} the comparator used to order the elements in this set,
+<span class='line'> 27</span>      * or null if this set uses the natural ordering of its elements
+<span class='line'> 28</span>      * @description A Set that further provides a total ordering on its elements.
+<span class='line'> 29</span>      */</span><span class="WHIT">
+<span class='line'> 30</span> </span><span class="WHIT">    </span><span class="NAME">comparator</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 31</span> </span><span class="WHIT">    </span><span class="PUNC">{</span><span class="KEYW">throw</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">calitha.exception.VirtualFunctionException</span><span class="PUNC">(</span><span class="NAME">Error</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 32</span> </span><span class="WHIT">    </span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 33</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'> 34</span>      * @function
+<span class='line'> 35</span>      * @returns {Object} the first (lowest) element currently in this set 
+<span class='line'> 36</span>      * @description Returns the first (lowest) element currently in this set.
+<span class='line'> 37</span>      */</span><span class="WHIT">
+<span class='line'> 38</span> </span><span class="WHIT">    </span><span class="NAME">first</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 39</span> </span><span class="WHIT">    </span><span class="PUNC">{</span><span class="KEYW">throw</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">calitha.exception.VirtualFunctionException</span><span class="PUNC">(</span><span class="NAME">Error</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 40</span> </span><span class="WHIT">    </span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 41</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'> 42</span>      * @function
+<span class='line'> 43</span>      * @param toElement high endpoint of the returned set
+<span class='line'> 44</span>      * @param inclusive true if the high endpoint is to be included in the returned view
+<span class='line'> 45</span>      * @returns {calitha.collections.ISortedSet} a view of the portion of this set whose elements are less than
+<span class='line'> 46</span>      * (or equal to, if inclusive is true) toElement
+<span class='line'> 47</span>      * @description Returns a view of the portion of this set whose elements are less than
+<span class='line'> 48</span>      * (or equal to, if inclusive is true) toElement.
+<span class='line'> 49</span>      */</span><span class="WHIT">
+<span class='line'> 50</span> </span><span class="WHIT">    </span><span class="NAME">headSet</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="COMM">/**Object*/</span><span class="WHIT"> </span><span class="NAME">toElement</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="COMM">/**Boolean*/</span><span class="WHIT"> </span><span class="NAME">inclusive</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 51</span> </span><span class="WHIT">    </span><span class="PUNC">{</span><span class="KEYW">throw</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">calitha.exception.VirtualFunctionException</span><span class="PUNC">(</span><span class="NAME">Error</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 52</span> </span><span class="WHIT">    </span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 53</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'> 54</span>      * @function
+<span class='line'> 55</span>      * @returns {Object} the last (highest) element currently in this set
+<span class='line'> 56</span>      * @description  Returns the last (highest) element currently in this set.
+<span class='line'> 57</span>      */</span><span class="WHIT">
+<span class='line'> 58</span> </span><span class="WHIT">    </span><span class="NAME">last</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 59</span> </span><span class="WHIT">    </span><span class="PUNC">{</span><span class="KEYW">throw</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">calitha.exception.VirtualFunctionException</span><span class="PUNC">(</span><span class="NAME">Error</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 60</span> </span><span class="WHIT">    </span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 61</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'> 62</span>      * @function
+<span class='line'> 63</span>      * @param fromElement low endpoint of the returned set
+<span class='line'> 64</span>      * @param fromInclusive true if the low endpoint is to be included in the returned view
+<span class='line'> 65</span>      * @param toElement high endpoint of the returned set
+<span class='line'> 66</span>      * @param toInclusive true if the high endpoint is to be included in the returned view
+<span class='line'> 67</span>      * @returns {calitha.collections.ISortedSet} a view of the portion of this set whose elements range from fromElement,
+<span class='line'> 68</span>      * inclusive, to toElement, exclusive
+<span class='line'> 69</span>      * @description Returns a view of the portion of this set whose elements range from fromElement to toElement.
+<span class='line'> 70</span>      */</span><span class="WHIT">
+<span class='line'> 71</span> </span><span class="WHIT">    </span><span class="NAME">subSet</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="COMM">/**Object*/</span><span class="WHIT"> </span><span class="NAME">fromElement</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="COMM">/**Boolean*/</span><span class="WHIT"> </span><span class="NAME">fromInclusive</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="COMM">/**Object*/</span><span class="WHIT"> </span><span class="NAME">toElement</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="COMM">/**Boolean*/</span><span class="WHIT"> </span><span class="NAME">toInclusive</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 72</span> </span><span class="WHIT">    </span><span class="PUNC">{</span><span class="KEYW">throw</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">calitha.exception.VirtualFunctionException</span><span class="PUNC">(</span><span class="NAME">Error</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 73</span> </span><span class="WHIT">    </span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 74</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'> 75</span>      * @function
+<span class='line'> 76</span>      * @param fromElement low endpoint of the returned set
+<span class='line'> 77</span>      * @param inclusive true if the low endpoint is to be included in the returned view
+<span class='line'> 78</span>      * @returns {calitha.collections.ISortedSet} a view of the portion of this set whose elements are greater than
+<span class='line'> 79</span>      * or equal to fromElement
+<span class='line'> 80</span>      * @description Returns a view of the portion of this set whose elements are greater than (or equal to,
+<span class='line'> 81</span>      * if inclusive is true) fromElement.
+<span class='line'> 82</span>      */</span><span class="WHIT">
+<span class='line'> 83</span> </span><span class="WHIT">    </span><span class="NAME">tailSet</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="COMM">/**Object*/</span><span class="WHIT"> </span><span class="NAME">fromElement</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="COMM">/**Boolean*/</span><span class="WHIT"> </span><span class="NAME">inclusive</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 84</span> </span><span class="WHIT">    </span><span class="PUNC">{</span><span class="KEYW">throw</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">calitha.exception.VirtualFunctionException</span><span class="PUNC">(</span><span class="NAME">Error</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 85</span> </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 86</span> </span></pre></body></html>

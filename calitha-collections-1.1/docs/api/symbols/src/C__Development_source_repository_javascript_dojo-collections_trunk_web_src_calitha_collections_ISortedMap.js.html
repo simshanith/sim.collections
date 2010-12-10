@@ -1,0 +1,89 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=UTF-8"> <style>
+	.KEYW {color: #933;}
+	.COMM {color: #bbb; font-style: italic;}
+	.NUMB {color: #393;}
+	.STRN {color: #393;}
+	.REGX {color: #339;}
+	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
+	</style></head><body><pre><span class='line'>  1</span> <span class="NAME">dojo.provide</span><span class="PUNC">(</span><span class="STRN">"calitha.collections.ISortedMap"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>  2</span> </span><span class="NAME">dojo.require</span><span class="PUNC">(</span><span class="STRN">"calitha.collections.IMap"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>  3</span> </span><span class="NAME">dojo.require</span><span class="PUNC">(</span><span class="STRN">"calitha.exception.VirtualFunctionException"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>  4</span> 
+<span class='line'>  5</span> </span><span class="COMM">/**
+<span class='line'>  6</span>  * @name calitha.collections.ISortedMap
+<span class='line'>  7</span>  * @class A Map that further provides a total ordering on its keys.
+<span class='line'>  8</span>  * &lt;p>
+<span class='line'>  9</span>  * It is based on the
+<span class='line'> 10</span>  * &lt;a href="http://java.sun.com/javase/6/docs/api/java/util/SortedMap.html">Java SortedMap interface&lt;/a>.
+<span class='line'> 11</span>  * Differences are:
+<span class='line'> 12</span>  * &lt;p>
+<span class='line'> 13</span>  * &lt;ul>
+<span class='line'> 14</span>  * &lt;li>In Java it is the NavigableMap interface that has methods with extra inclusive parameters for subMap and such.
+<span class='line'> 15</span>  * Those methods have been put in this ISortedMap class to replace those same methods without the inclusive parameters.
+<span class='line'> 16</span>  * This is done because overloading methods with inheritance too would be too confusing. And the methods with inclusive
+<span class='line'> 17</span>  * parameters are more clear anyway.
+<span class='line'> 18</span>  * &lt;/ul>
+<span class='line'> 19</span>  * @extends calitha.collections.IMap
+<span class='line'> 20</span>  */</span><span class="WHIT">
+<span class='line'> 21</span> </span><span class="NAME">dojo.declare</span><span class="PUNC">(</span><span class="STRN">"calitha.collections.ISortedMap"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">calitha.collections.IMap</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 22</span> </span><span class="COMM">/** @lends calitha.collections.ISortedMap# */</span><span class="WHIT">
+<span class='line'> 23</span> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 24</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'> 25</span>      * @function
+<span class='line'> 26</span>      * @returns {calitha.collections.IComparator} the comparator used to order the keys in this map,
+<span class='line'> 27</span>      * or null if this map uses the natural ordering of its keys
+<span class='line'> 28</span>      * @description  Returns the comparator used to order the keys in this map, or null if this map uses the natural ordering of its keys.
+<span class='line'> 29</span>      */</span><span class="WHIT">
+<span class='line'> 30</span> </span><span class="WHIT">    </span><span class="NAME">comparator</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 31</span> </span><span class="WHIT">    </span><span class="PUNC">{</span><span class="KEYW">throw</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">calitha.exception.VirtualFunctionException</span><span class="PUNC">(</span><span class="NAME">Error</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 32</span> </span><span class="WHIT">    </span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 33</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'> 34</span>      * @function
+<span class='line'> 35</span>      * @returns {Object} the first (lowest) key currently in this map
+<span class='line'> 36</span>      * @description Returns the first (lowest) key currently in this map.
+<span class='line'> 37</span>      */</span><span class="WHIT">
+<span class='line'> 38</span> </span><span class="WHIT">    </span><span class="NAME">firstKey</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 39</span> </span><span class="WHIT">    </span><span class="PUNC">{</span><span class="KEYW">throw</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">calitha.exception.VirtualFunctionException</span><span class="PUNC">(</span><span class="NAME">Error</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 40</span> </span><span class="WHIT">    </span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 41</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'> 42</span>      * @function
+<span class='line'> 43</span>      * @param toKey high endpoint of the keys in the returned map
+<span class='line'> 44</span>      * @param inclusive true if the high endpoint is to be included in the returned view 
+<span class='line'> 45</span>      * @returns {calitha.collections.ISortedMap} a view of the portion of this map whose keys are less than
+<span class='line'> 46</span>      * (or equal to, if inclusive is true) toKey
+<span class='line'> 47</span>      * @description Returns a view of the portion of this map whose keys are less than (or equal to, if inclusive is true) toKey.
+<span class='line'> 48</span>      */</span><span class="WHIT">
+<span class='line'> 49</span> </span><span class="WHIT">    </span><span class="NAME">headMap</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="COMM">/**Object*/</span><span class="WHIT"> </span><span class="NAME">toKey</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="COMM">/**Boolean*/</span><span class="WHIT"> </span><span class="NAME">inclusive</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 50</span> </span><span class="WHIT">    </span><span class="PUNC">{</span><span class="KEYW">throw</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">calitha.exception.VirtualFunctionException</span><span class="PUNC">(</span><span class="NAME">Error</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 51</span> </span><span class="WHIT">    </span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 52</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'> 53</span>      * @function
+<span class='line'> 54</span>      * @returns {Object} the last (highest) key currently in this map
+<span class='line'> 55</span>      * @description Returns the last (highest) key currently in this map.
+<span class='line'> 56</span>      */</span><span class="WHIT">
+<span class='line'> 57</span> </span><span class="WHIT">    </span><span class="NAME">lastKey</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 58</span> </span><span class="WHIT">    </span><span class="PUNC">{</span><span class="KEYW">throw</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">calitha.exception.VirtualFunctionException</span><span class="PUNC">(</span><span class="NAME">Error</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 59</span> </span><span class="WHIT">    </span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 60</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'> 61</span>      * @function
+<span class='line'> 62</span>      * @param fromKey low endpoint (inclusive) of the keys in the returned map
+<span class='line'> 63</span>      * @param fromInclusive true if the low endpoint is to be included in the returned view
+<span class='line'> 64</span>      * @param toKey high endpoint of the keys in the returned map
+<span class='line'> 65</span>      * @param toInclusive true if the high endpoint is to be included in the returned view 
+<span class='line'> 66</span>      * @returns {calitha.collections.ISortedMap} a view of the portion of this map whose keys range from fromKey to toKey
+<span class='line'> 67</span>      * @description Returns a view of the portion of this map whose keys range from fromKey to toKey.
+<span class='line'> 68</span>      */</span><span class="WHIT">
+<span class='line'> 69</span> </span><span class="WHIT">    </span><span class="NAME">subMap</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="COMM">/**Object*/</span><span class="WHIT"> </span><span class="NAME">fromKey</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="COMM">/**Boolean*/</span><span class="WHIT"> </span><span class="NAME">fromInclusive</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="COMM">/**Object*/</span><span class="WHIT"> </span><span class="NAME">toKey</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="COMM">/**Boolean*/</span><span class="WHIT"> </span><span class="NAME">toInclusive</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 70</span> </span><span class="WHIT">    </span><span class="PUNC">{</span><span class="KEYW">throw</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">calitha.exception.VirtualFunctionException</span><span class="PUNC">(</span><span class="NAME">Error</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 71</span> </span><span class="WHIT">    </span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 72</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'> 73</span>      * @function
+<span class='line'> 74</span>      * @param fromKey low endpoint of the keys in the returned map
+<span class='line'> 75</span>      * @param inclusive true if the low endpoint is to be included in the returned view
+<span class='line'> 76</span>      * @returns {calitha.collections.ISortedMap} a view of the portion of this map whose keys are greater than (or equal to, if inclusive is true) fromKey
+<span class='line'> 77</span>      * @description Returns a view of the portion of this map whose keys are greater than (or equal to, if inclusive is true) fromKey.
+<span class='line'> 78</span>      */</span><span class="WHIT">
+<span class='line'> 79</span> </span><span class="WHIT">    </span><span class="NAME">tailMap</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="COMM">/**Object*/</span><span class="WHIT"> </span><span class="NAME">fromKey</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="COMM">/**Boolean*/</span><span class="WHIT"> </span><span class="NAME">inclusive</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 80</span> </span><span class="WHIT">    </span><span class="PUNC">{</span><span class="KEYW">throw</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">calitha.exception.VirtualFunctionException</span><span class="PUNC">(</span><span class="NAME">Error</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 81</span> </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 82</span> </span></pre></body></html>

@@ -1,0 +1,30 @@
+<html><head><meta http-equiv="content-type" content="text/html; charset=UTF-8"> <style>
+	.KEYW {color: #933;}
+	.COMM {color: #bbb; font-style: italic;}
+	.NUMB {color: #393;}
+	.STRN {color: #393;}
+	.REGX {color: #339;}
+	.line {border-right: 1px dotted #666; color: #666; font-style: normal;}
+	</style></head><body><pre><span class='line'>  1</span> <span class="NAME">dojo.provide</span><span class="PUNC">(</span><span class="STRN">"calitha.collections.IComparable"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>  2</span> </span><span class="NAME">dojo.require</span><span class="PUNC">(</span><span class="STRN">"calitha.exception.VirtualFunctionException"</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>  3</span> 
+<span class='line'>  4</span> </span><span class="COMM">/**
+<span class='line'>  5</span>  * @name calitha.collections.IComparable
+<span class='line'>  6</span>  * @class This interface imposes a total ordering on the objects of each class that implements it.
+<span class='line'>  7</span>  * &lt;p>
+<span class='line'>  8</span>  * It is based on the
+<span class='line'>  9</span>  * &lt;a href="http://java.sun.com/javase/6/docs/api/java/lang/Comparable.html">Java Comparable interface&lt;/a>.
+<span class='line'> 10</span>  */</span><span class="WHIT">
+<span class='line'> 11</span> </span><span class="NAME">dojo.declare</span><span class="PUNC">(</span><span class="STRN">"calitha.collections.IComparable"</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="KEYW">null</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'> 12</span> </span><span class="COMM">/** @lends calitha.collections.IComparable#*/</span><span class="WHIT">
+<span class='line'> 13</span> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'> 14</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'> 15</span>      * @function
+<span class='line'> 16</span>      * @param o the object to be compared. 
+<span class='line'> 17</span>      * @return {Number} a negative integer, zero, or a positive integer as this object is less than, equal to, or greater than the specified object.
+<span class='line'> 18</span>      * @description Compares this object with the specified object for order.
+<span class='line'> 19</span>      */</span><span class="WHIT">
+<span class='line'> 20</span> </span><span class="WHIT">    </span><span class="NAME">compareTo</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="PUNC">(</span><span class="COMM">/**Object*/</span><span class="WHIT"> </span><span class="NAME">o</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'> 21</span> </span><span class="WHIT">    </span><span class="PUNC">{</span><span class="KEYW">throw</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">calitha.exception.VirtualFunctionException</span><span class="PUNC">(</span><span class="NAME">Error</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'> 22</span> </span><span class="PUNC">}</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'> 23</span> </span></pre></body></html>
